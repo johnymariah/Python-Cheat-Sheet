@@ -1,0 +1,7 @@
+df.shape[0] #rows
+df.shape[1] # columns
+list(df.columns) #clumn names
+df.isnull() # returns True if NULL values exist
+df.isnull().sum().values.sum() 
+df['churn_rate'].nunique() # count of unique values
+df['churn_rate'].unique() #unique values
