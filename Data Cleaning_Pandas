@@ -5,3 +5,22 @@ df.isnull() # returns True if NULL values exist
 df.isnull().sum().values.sum() 
 df['churn_rate'].nunique() # count of unique values
 df['churn_rate'].unique() #unique values
+df['Churn'].value_counts() # unique value + the count
+df.describe(include='all') # statistics for all columns
+
+#quick plot for a categorical column
+import seaborn as sns
+ax = sns.catplot(y='Churn', kind='count', data=df, height=2.5, aspect=2.5, orient='h')
+
+
+#quick plot for numerical values - probability density distribution
+def distplot(feature, frame):
+    plt.figure(figsize=(8,3))
+    plt.title("Distribution for {}".format(feature))
+    ax0 = sns.distplot(frame[frame['Churn'] == 'No'][feature], color= 'b', label='Churn: No')
+    ax1 = sns.distplot(frame[frame['Churn'] == 'Yes'][feature], color= 'g', label='Churn: Yes')
+    plt.legend()
+    plt.show()
+    
+display(df['MonthlyCharges'].describe())
+distplot('MonthlyCharges', df)
