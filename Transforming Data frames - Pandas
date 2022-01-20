@@ -1,3 +1,6 @@
 # creating new column conditionally
 df['churn_rate'] = df['Churn'].replace("No", 0).replace("Yes", 1)
 df['churn_rate'] = np.where(df['Churn'] == 'Yes', 1, 0)
+
+#filtering
+titanic_fare_f = titanic_fare.loc[(titanic_fare['Sex'] == 'female') & (titanic_fare['Survived'] == 1)]
